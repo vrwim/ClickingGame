@@ -8,7 +8,10 @@ var totalClicks = 0;
 var totalPoints = 0;
 
 // Aantal gebruikers
-var users = 0;
+if(localStorage.users !== 0) {
+	localStorage.users = 0;
+}
+var users = localStorage.users;
 
 // Hoeveel kliks er nodig zijn voor het volgende punt
 function clicksToNextPoint() {
@@ -54,32 +57,36 @@ function click() {
 	}
 }
 
+// Objects in JavaScript!
+function Participant(userName, pts, clicksSinceLastPoint, total) {
+	this.name = userName;
+	this.points = pts;
+	this.clicksSinceLastPoint = clicksSinceLastPoint;
+	this.totalClicks = total;
+}
+
 function clickStop() {
 
-	users += 1;
+	localStorage.users += 1;
 
-	var table = document.getElementById("resultsTable");
-	var row = table.insertRow(table.childNodes.length - 1);
+	var userName = prompt("Wat is jouw naam?");
 
-	var cell1 = row.insertCell(0);
-	var cell2 = row.insertCell(1);
-	var cell3 = row.insertCell(2);
-	var cell4 = row.insertCell(3);
+	var saveKey = 'user_' + users;
+	localStorage.setItem(saveKey, JSON.stringify(new Participant(userName, totalPoints, clicks, totalClicks)));
 
-	cell1.innerHTML = "Gebruiker " + users;
-	cell2.innerHTML = totalPoints;
-	cell3.innerHTML = clicks;
-	cell4.innerHTML = totalClicks;
+	window.open('thanks.html?userName='+userName+'&totalPoints='+totalPoints+'&clicks='+clicks+'&totalClicks='+totalClicks, '_blank');
 
 	// Reset alles
 	clicks = 0;
 	totalClicks = 0;
 	totalPoints = 0;
-}
 
-document.getElementById('resultsTable').style.visibility = 'hidden';
+	// Nu updaten we het level op de website
+	document.getElementById("clicksText").innerHTML = "Welkom!";
+}
 
 // Negeer dit :)
 document.getElementById("imgLeft").onclick = click;
 document.getElementById("imgRight").onclick = click;
 document.getElementById("stopButton").onclick = clickStop;
+document.getElementById('imgRight').style.visibility = 'hidden';

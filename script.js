@@ -69,7 +69,7 @@ function clickStop() {
 
 	localStorage.users += 1;
 
-	var userName = prompt("Wat is jouw naam?");
+	var userName = prompt("SONA NUMMER:");
 
 	var saveKey = 'user_' + users;
 	localStorage.setItem(saveKey, JSON.stringify(new Participant(userName, totalPoints, clicks, totalClicks)));

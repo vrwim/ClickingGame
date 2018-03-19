@@ -1,14 +1,23 @@
 <html>
 <head>
-	<title>Thanks!</title>
+	<title>Bedankt!</title>
 </head>
 <body>
-	<h1>Thanks!</h1>
+	<h1>Einde game!</h1>
 	<p id="textToReplace">
-	Hier kan je wat tekst ingeven om de persoon te bedanken. Elke parameter mag maar 1x voorkomen.
-	<br/>
-	Hey {{userName}}! Zeer goed gedaan, je behaalde {{totalPoints}} {{totalPoints}} punten! Je had ondertussen al {{totalClicks}} keer geklikt.
+		
+	<font face="Arial" size="5">
+		Je hebt het spel be&euml;indigd. 
+		<br/>
+		<br/>
+		Je behaalde {{totalPoints}} punten! Je had ondertussen al {{totalClicks}} keer geklikt.
+		<br/>
+		<br/>
+
+		<b>Schrijf <u>het aantal punten</u> en <u>aantal clicks</u> neer op het blad papier en in qualtrics!</b>
+	</font>
 	</p>
+
 	<script>
 		var params = window.location.search.substr(1).split('&');
 
@@ -20,7 +29,6 @@
 		}
 
 		document.getElementById('textToReplace').innerHTML = text;
-
 	</script>
 </body>
 </html>

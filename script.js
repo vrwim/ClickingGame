@@ -8,7 +8,7 @@ var totalClicks = 0;
 var totalPoints = 0;
 
 // Aantal gebruikers
-if(localStorage.users !== 0) {
+if(!localStorage.users) {
 	localStorage.users = 0;
 }
 var users = localStorage.users;
@@ -67,7 +67,7 @@ function Participant(userName, pts, clicksSinceLastPoint, total) {
 
 function clickStop() {
 
-	localStorage.users += 1;
+	localStorage.users = Number(localStorage.users) + 1;
 
 	var userName = prompt("SONA NUMMER:");
 
@@ -83,6 +83,7 @@ function clickStop() {
 
 	// Nu updaten we het level op de website
 	document.getElementById("clicksText").innerHTML = "Welkom!";
+	users = localStorage.users;
 }
 
 // Negeer dit :)

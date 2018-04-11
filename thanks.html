@@ -1,23 +1,18 @@
 <html>
 <head>
-	<title>Bedankt!</title>
+	<P ALIGN="center"><br /><br /><title>Bedankt!</title></CENTER>
 </head>
 <body>
-	<h1 style="text-align: center;">Einde game!</h1>
-	<p id="textToReplace" style="text-align: center;">
+	<h1>Einde game!</h1>
+	<p id="textToReplace">
 		
-	<font face="Arial" size="5">
-		Je hebt het spel be&euml;indigd. 
-		<br/>
-		<br/>
-		Je behaalde {{totalPoints}} punten! Je had ondertussen al {{totalClicks}} keer geklikt.
-		<br/>
-		<br/>
+<FONT FACE="Arial"><FONT SIZE="5">Je hebt het spel beëindigd. 
+	<br/> <br />
+	Je behaalde {{totalPoints}} punten! Je had ondertussen al {{totalClicks}} keer geklikt. <br /> <br />
 
-		<b>Schrijf <u>het aantal punten</u> en <u>aantal clicks</u> neer op het blad papier en in qualtrics!</b>
-	</font>
+	<B>Schrijf <U>het aantal punten</U> en <U>aantal clicks</U> neer op het blad papier en in qualtrics!</B></FONT></FONT>
 	</p>
-	<a href="export.html">Export data</a>
+
 	<script>
 		var params = window.location.search.substr(1).split('&');
 
@@ -29,6 +24,7 @@
 		}
 
 		document.getElementById('textToReplace').innerHTML = text;
+
 	</script>
 </body>
 </html>

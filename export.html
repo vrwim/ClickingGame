@@ -1,0 +1,40 @@
+<html>
+<head>
+	<title>Clickety-click</title>
+</head>
+<body>
+	<table id="exportTable">
+		<tr>
+			<td>SONA nummer</td>
+			<td>Punten</td>
+			<td>Klikken sinds laatste punt</td>
+			<td>Totaal aantal klikken</td>
+		</tr>
+	</table>
+
+	<script>
+
+		// Aantal gebruikers
+		var users = localStorage.users;
+
+		var table = document.getElementById("exportTable");
+
+		for (var i = 0; i < users; i += 1) {
+
+			const user = JSON.parse(localStorage["user_" + i]);
+
+			var row = table.insertRow(table.childNodes.length - 1);
+
+			var cell1 = row.insertCell(0);
+			var cell2 = row.insertCell(1);
+			var cell3 = row.insertCell(2);
+			var cell4 = row.insertCell(3);
+
+			cell1.innerHTML = user.name;
+			cell2.innerHTML = user.points;
+			cell3.innerHTML = user.clicksSinceLastPoint;
+			cell4.innerHTML = user.totalClicks;
+		}
+	</script>
+</body>
+</html>

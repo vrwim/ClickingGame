@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<title>Bedankt!</title>
+	</head>
+	<body>
+		<h1>Flink zo!</h1>
+		<p id="textToReplace">
+			<FONT FACE="Arial" SIZE="5">
+				Je hebt het spel beëindigd. 
+				<br/> <br/>
+				Je cirkel was {{size}} groot! <br /> <br />
+
+				<B>Schrijf <U>de grootte</U> neer op het blad papier en in qualtrics!</B>
+			</FONT>
+		</p>
+
+		<script>
+			var params = window.location.search.substr(1).split('&');
+
+			var text = document.getElementById('textToReplace').innerHTML;
+
+			for(var i = 0; i < params.length; i++) {
+				var param = params[i].split('=');
+				text = text.replace(new RegExp('{{'+param[0]+'}}', 'g'), param[1]);
+			}
+
+			document.getElementById('textToReplace').innerHTML = text;
+
+		</script>
+	</body>
+</html>

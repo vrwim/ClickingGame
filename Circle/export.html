@@ -13,13 +13,13 @@
 	<script>
 
 		// Aantal gebruikers
-		var users = localStorage.users;
+		var users = localStorage.users2;
 
 		var table = document.getElementById("exportTable");
 
 		for (var i = 0; i < users; i += 1) {
 
-			const user = JSON.parse(localStorage["user_" + i]);
+			const user = JSON.parse(localStorage["user_2_" + i]);
 
 			var row = table.insertRow(table.childNodes.length - 1);
 

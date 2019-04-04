@@ -1,8 +1,8 @@
 // Number of users
-if(!localStorage.users) {
-	localStorage.users = 0;
+if(!localStorage.users2) {
+	localStorage.users2 = 0;
 }
-var users = localStorage.users;
+var users = localStorage.users2;
 
 // Objects in JavaScript!
 function Participant(userName, size) {
@@ -14,16 +14,16 @@ function clickStop() {
 
 	var size = slider.value();
 
-	localStorage.users = Number(localStorage.users) + 1;
+	localStorage.users2 = Number(localStorage.users2) + 1;
 
 	var userName = prompt("SONA NUMMER:");
 
-	var saveKey = 'user_' + users;
+	var saveKey = 'user_2_' + users;
 	localStorage.setItem(saveKey, JSON.stringify(new Participant(userName, size)));
 
 	window.open('thanks.html?userName=' + userName + '&size=' + size, '_blank');
 
-	users = localStorage.users;
+	users = localStorage.users2;
 }
 
 document.getElementById("stopButton").onclick = clickStop;

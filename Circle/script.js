@@ -1,48 +1,47 @@
-// Number of users
-if(!localStorage.users2) {
-	localStorage.users2 = 0;
-}
-var users = localStorage.users2;
-
-// Objects in JavaScript!
-function Participant(userName, size) {
-	this.name = userName;
-	this.size = size;
-}
+// Stop button
+// Probly unneeded
 
 function clickStop() {
-
 	var size = slider.value();
-
-	localStorage.users2 = Number(localStorage.users2) + 1;
-
-	var userName = prompt("SONA NUMMER:");
-
-	var saveKey = 'user_2_' + users;
-	localStorage.setItem(saveKey, JSON.stringify(new Participant(userName, size)));
-
-	window.open('thanks.html?userName=' + userName + '&size=' + size, '_blank');
-
-	users = localStorage.users2;
+	console.log(size);
 }
 
 document.getElementById("stopButton").onclick = clickStop;
 
-// p5
+// Constants
+var WIDTH = 400;
+var HEIGHT = 400;
 
-var CANVAS_SIZE = 400;
-var STARTING_SIZE = 100;
+var MIN_CIRCLE_RADIUS = 10;
+var MAX_CIRCLE_RADIUS = 190;
+var BEGIN_CIRCLE_RADIUS = 50;
 
-var slider;
+// Setup canvas
+var canvas = document.getElementById("canvas");
+canvas.width = WIDTH;
+canvas.height = HEIGHT;
+var context = canvas.getContext("2d");
 
-function setup() {
-	createCanvas(CANVAS_SIZE, CANVAS_SIZE);
-	slider = createSlider(1, CANVAS_SIZE / 2, STARTING_SIZE);
-}
+// Setup slider
+var slider = document.getElementById("slider");
+slider.min = MIN_CIRCLE_RADIUS;
+slider.max = MAX_CIRCLE_RADIUS;
+slider.value = BEGIN_CIRCLE_RADIUS;
 
 function draw() {
-	background(220);
-	stroke(0);
-	fill(0, 0, 0, 0);
-	circle(CANVAS_SIZE / 2, CANVAS_SIZE / 2, slider.value());
+	var radius = slider.value;
+
+	context.clearRect(0, 0, canvas.width, canvas.height);
+	context.beginPath();
+	context.arc(canvas.width / 2, canvas.height / 2, radius, 0, 2 * Math.PI);
+	context.lineWidth = 1;
+	context.strokeStyle = 'black';
+	context.stroke();
+}
+
+draw();
+
+slider.oninput = function () {
+	Qualtrics.SurveyEngine.setEmbeddedData('circleradius', slider.value);
+	draw();
 }
